@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html' %}
 
 {% block content %}
@@ -26,4 +27,34 @@
     {% endfor %}
 </div>
 
+=======
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<hr>
+
+
+<div class="row">
+    {% for each in object_list %}
+    <div class="col">
+        <div class="card" style="width: 13rem;">
+            <img src="{{ each.image_url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ each.title|slice:":25"}} ...</h5>
+                <p class="card-text">${{ each.price|floatformat:2 }}</p>                
+                {% if each.book_available is True %}
+                <li class="text-primary">Available</li>
+                {% else %}
+                <li class="text-danger">Out of Stock !</li>
+                {% endif %}<br>
+                <a href="{% url 'detail' each.id %}" class="btn btn-primary">View</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+>>>>>>> b1ce6284922c8a8069dd4a073bbf381b4b949d18
 {% endblock content %}
