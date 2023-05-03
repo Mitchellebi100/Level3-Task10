@@ -11,11 +11,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class BooksListView(ListView):
+    '''booklist'''
     model = Book
     template_name = 'list.html'
+    
 
 
 class BooksDetailView(DetailView):
+    '''detail list'''
     model = Book
     template_name = 'detail.html'
 
@@ -25,6 +28,7 @@ class SearchResultsListView(ListView):
 	template_name = 'search_results.html'
 
 	def get_queryset(self): # new
+        '''return book title and the author'''
 		query = self.request.GET.get('q')
 		return Book.objects.filter(
 		Q(title__icontains=query) | Q(author__icontains=query)
